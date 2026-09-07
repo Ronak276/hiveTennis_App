@@ -60,8 +60,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
           alt="HiveTennis Action Player"
           className="h-full w-full object-cover object-top filter contrast-[1.05]"
         />
-        {/* Soft Dark Gradient at bottom for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
+        {/* Sleek Dark Vignette Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-slate-950/90" />
       </div>
 
       {/* Mock Mobile Status Bar (9:41 AM, 5G, Battery) */}
@@ -95,9 +95,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
         </div>
       </div>
 
-      {/* Floating Action Area: ONLY Green Button Floating Directly Over Image (Wrapper background removed) */}
+      {/* Floating Action Area: ONLY Green Get Started Button */}
       <div className="relative z-10 w-full max-w-md mx-auto mt-auto p-5 pb-8 space-y-3 text-center">
-        {/* Main ONLY Green Get Started Button */}
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
           <Button
             onClick={() => setShowAuthModal(true)}
@@ -118,10 +117,10 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
         </button>
       </div>
 
-      {/* Interactive Dark Glass Login / Sign Up Bottom Sheet Modal */}
+      {/* Interactive WHITE Background Login / Sign Up Bottom Sheet Modal */}
       <AnimatePresence>
         {showAuthModal && (
-          <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 backdrop-blur-xs p-3 sm:p-4">
+          <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-xs p-3 sm:p-4">
             {/* Backdrop click closes modal */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -131,18 +130,18 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
               className="absolute inset-0"
             />
 
-            {/* Dark Glass Bottom Sheet Modal */}
+            {/* WHITE Background Bottom Sheet Modal Card */}
             <motion.div
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-              className="w-full max-w-md bg-slate-900/95 backdrop-blur-2xl text-white rounded-3xl p-5 sm:p-6 shadow-2xl border border-white/20 space-y-4 relative z-10 max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-md bg-white text-[#17171A] rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 relative z-10 max-h-[90vh] overflow-y-auto"
             >
               {/* Close Icon Button */}
               <button
                 onClick={() => setShowAuthModal(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white cursor-pointer focus:outline-none transition-colors"
+                className="absolute top-4 right-4 p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 cursor-pointer focus:outline-none transition-colors"
                 title="Close"
               >
                 <X className="h-4 w-4" />
@@ -150,13 +149,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
 
               {isSuccess ? (
                 <div className="py-8 flex flex-col items-center justify-center text-center space-y-3">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#8DC61F] text-[#172100]">
-                    <CheckCircle2 className="h-10 w-10 text-[#172100]" />
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#8DC61F]/20 text-[#172100]">
+                    <CheckCircle2 className="h-10 w-10 text-[#8DC61F]" />
                   </div>
-                  <h3 className="text-xl font-black text-white">
+                  <h3 className="text-xl font-black text-[#17171A]">
                     Welcome Back, {fullName}!
                   </h3>
-                  <p className="text-xs text-slate-300 max-w-xs">
+                  <p className="text-xs text-slate-500 max-w-xs">
                     UTR <strong>{utrRating}</strong> Profile Verified. Entering HiveTennis Dashboard...
                   </p>
                 </div>
@@ -165,24 +164,24 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                   {/* Header & Mode Switcher */}
                   <div className="space-y-3 pr-6 text-left">
                     <div className="flex items-center space-x-2">
-                      <span className="rounded-full bg-[#8DC61F]/20 border border-[#8DC61F]/40 text-[#8DC61F] px-2.5 py-0.5 text-[10px] font-extrabold flex items-center gap-1">
+                      <span className="rounded-full bg-[#8DC61F]/20 text-[#172100] px-2.5 py-0.5 text-[10px] font-extrabold flex items-center gap-1">
                         <Sparkles className="h-3 w-3 text-[#8DC61F]" />
                         <span>TENNIS PLAYER APP</span>
                       </span>
                     </div>
-                    <h3 className="text-xl font-black text-white">
+                    <h3 className="text-xl font-black text-[#17171A]">
                       {authMode === 'login' ? 'Player Member Sign In' : 'Join HiveTennis Club'}
                     </h3>
 
                     {/* Mode Toggle Tabs (Sign In / Register) */}
-                    <div className="grid grid-cols-2 gap-1 rounded-2xl bg-white/10 p-1 text-xs font-bold">
+                    <div className="grid grid-cols-2 gap-1 rounded-2xl bg-slate-100 p-1 text-xs font-bold">
                       <button
                         type="button"
                         onClick={() => setAuthMode('login')}
                         className={`py-2 rounded-xl transition-all cursor-pointer ${
                           authMode === 'login'
-                            ? 'bg-[#8DC61F] text-[#172100] font-black shadow-xs'
-                            : 'text-slate-300 hover:text-white'
+                            ? 'bg-white text-[#17171A] shadow-xs font-black'
+                            : 'text-slate-500 hover:text-slate-800'
                         }`}
                       >
                         Sign In
@@ -192,8 +191,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                         onClick={() => setAuthMode('signup')}
                         className={`py-2 rounded-xl transition-all cursor-pointer ${
                           authMode === 'signup'
-                            ? 'bg-[#8DC61F] text-[#172100] font-black shadow-xs'
-                            : 'text-slate-300 hover:text-white'
+                            ? 'bg-white text-[#17171A] shadow-xs font-black'
+                            : 'text-slate-500 hover:text-slate-800'
                         }`}
                       >
                         Register Player
@@ -202,17 +201,17 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                   </div>
 
                   {/* One-Tap Demo Player Login Shortcut */}
-                  <div className="rounded-2xl bg-white/10 border border-white/20 p-3 flex items-center justify-between">
+                  <div className="rounded-2xl bg-[#8DC61F]/15 border border-[#8DC61F]/40 p-3 flex items-center justify-between">
                     <div className="flex items-center space-x-2.5">
                       <Avatar className="h-9 w-9 border border-[#8DC61F]">
                         <AvatarImage src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80" />
                         <AvatarFallback>AM</AvatarFallback>
                       </Avatar>
                       <div className="text-left">
-                        <span className="text-xs font-black text-white block leading-none">
+                        <span className="text-xs font-black text-[#17171A] block leading-none">
                           Alex Mercer
                         </span>
-                        <span className="text-[10px] font-bold text-slate-300">
+                        <span className="text-[10px] font-bold text-slate-600">
                           UTR 9.4 • Pro Member
                         </span>
                       </div>
@@ -233,7 +232,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                     {authMode === 'signup' && (
                       <>
                         <div>
-                          <label className="text-[10px] font-extrabold text-slate-300 block mb-1 uppercase">
+                          <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
                             PLAYER FULL NAME
                           </label>
                           <div className="relative">
@@ -242,7 +241,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                               value={fullName}
                               onChange={(e) => setFullName(e.target.value)}
                               placeholder="e.g. Marcus Vance"
-                              className="pl-9 h-10 text-xs rounded-xl bg-white/10 border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-[#8DC61F]"
+                              className="pl-9 h-10 text-xs rounded-xl bg-slate-50 border border-slate-200 text-[#17171A]"
                               required
                             />
                           </div>
@@ -250,13 +249,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
 
                         <div className="grid grid-cols-2 gap-2">
                           <div>
-                            <label className="text-[10px] font-extrabold text-slate-300 block mb-1 uppercase">
+                            <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
                               UTR RATING
                             </label>
                             <select
                               value={utrRating}
                               onChange={(e) => setUtrRating(e.target.value)}
-                              className="w-full h-10 rounded-xl bg-slate-800 border border-white/20 px-3 text-xs font-bold text-white"
+                              className="w-full h-10 rounded-xl bg-slate-50 border border-slate-200 px-3 text-xs font-bold text-slate-800"
                             >
                               <option value="4.5">UTR 4.5 - Beginner</option>
                               <option value="6.8">UTR 6.8 - Intermediate</option>
@@ -266,13 +265,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                           </div>
 
                           <div>
-                            <label className="text-[10px] font-extrabold text-slate-300 block mb-1 uppercase">
+                            <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
                               MEMBERSHIP TIER
                             </label>
                             <select
                               value={memberTier}
                               onChange={(e) => setMemberTier(e.target.value)}
-                              className="w-full h-10 rounded-xl bg-slate-800 border border-white/20 px-3 text-xs font-bold text-white"
+                              className="w-full h-10 rounded-xl bg-slate-50 border border-slate-200 px-3 text-xs font-bold text-slate-800"
                             >
                               <option value="Pro Player">Pro Member</option>
                               <option value="Junior Academy">Junior Academy</option>
@@ -284,7 +283,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                     )}
 
                     <div>
-                      <label className="text-[10px] font-extrabold text-slate-300 block mb-1 uppercase">
+                      <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
                         EMAIL ADDRESS
                       </label>
                       <div className="relative">
@@ -294,14 +293,14 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="alex.mercer@hivetennis.com"
-                          className="pl-9 h-10 text-xs rounded-xl bg-white/10 border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-[#8DC61F]"
+                          className="pl-9 h-10 text-xs rounded-xl bg-slate-50 border border-slate-200 text-[#17171A]"
                           required
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="text-[10px] font-extrabold text-slate-300 block mb-1 uppercase">
+                      <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
                         PASSWORD
                       </label>
                       <div className="relative">
@@ -311,7 +310,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           placeholder="••••••••••••"
-                          className="pl-9 h-10 text-xs rounded-xl bg-white/10 border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-[#8DC61F]"
+                          className="pl-9 h-10 text-xs rounded-xl bg-slate-50 border border-slate-200 text-[#17171A]"
                           required
                         />
                       </div>
@@ -320,7 +319,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-[#8DC61F] text-[#172100] hover:bg-[#7eb519] font-black text-sm rounded-2xl py-3.5 mt-2 shadow-lg shadow-[#8DC61F]/30 cursor-pointer"
+                      className="w-full bg-[#8DC61F] text-[#172100] hover:bg-[#7eb519] font-black text-sm rounded-2xl py-3.5 mt-2 shadow-md shadow-[#8DC61F]/20 cursor-pointer"
                     >
                       {authMode === 'login' ? 'Sign In & Play' : 'Create Player Profile'} ➔
                     </Button>
