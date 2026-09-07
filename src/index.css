@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --primary: #8DC61F;
+    --primary-foreground: #172100;
+    --background: #FFFFFF;
+    --foreground: #17171A;
+    --muted: #6B7280;
+    --muted-foreground: #4B5563;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom Utilities for HiveTennis Aesthetic */
+.hive-card-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, rgba(141, 198, 31, 0.08) 100%);
+}
+
+.hive-hero-gradient {
+  background: linear-gradient(135deg, rgba(141, 198, 31, 0.15) 0%, rgba(255, 255, 255, 0.95) 60%, rgba(141, 198, 31, 0.05) 100%);
+}
+
+.hive-lime-bg {
+  background-color: #8DC61F;
+}
+
+.text-hive-dark {
+  color: #172100;
+}
+
+.bg-hive-lime {
+  background-color: #8DC61F;
+}
+
+.text-hive-lime {
+  color: #8DC61F;
+}
+
+.border-hive-lime {
+  border-color: #8DC61F;
+}
+
+/* Hide scrollbar for smooth carousel scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

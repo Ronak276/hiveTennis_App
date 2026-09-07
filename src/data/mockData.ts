@@ -1,0 +1,351 @@
+export interface Player {
+  id: string;
+  name: string;
+  avatar: string;
+  badge: string;
+  utr: number;
+  playStyle: string;
+  statusTag?: string;
+  winRate?: string;
+  nextMatch?: string;
+  court?: string;
+  weeklyDrills?: string;
+  drillProgress?: number;
+  attendanceRate?: string;
+  requestTime?: string;
+  isOnline: boolean;
+}
+
+export interface Coach {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+  rating: number;
+  reviewsCount: number;
+  subtitle: string;
+  specialties: string[];
+  yearsPro?: number;
+  d1Recruits?: number;
+  successRate?: number;
+  rate: number;
+  nextAvailable: string;
+  isSpotlight?: boolean;
+}
+
+export interface Program {
+  id: string;
+  title: string;
+  category: string;
+  courtInfo: string;
+  price: string;
+  pricePeriod: string;
+  coachName: string;
+  coachTitle: string;
+  timeSlot: string;
+  duration: string;
+  spotsBooked: number;
+  spotsTotal: number;
+  badgeColor?: string;
+  isFull?: boolean;
+  waitlistCount?: number;
+}
+
+export interface ChatThread {
+  id: string;
+  senderName: string;
+  senderRole?: string;
+  avatar: string;
+  time: string;
+  lastMessage: string;
+  attachment?: string;
+  unreadCount?: number;
+  isGroup?: boolean;
+  groupMembers?: number;
+  isOnline?: boolean;
+  status?: string;
+  tag?: string;
+}
+
+export interface Review {
+  id: string;
+  author: string;
+  role: string;
+  rating: number;
+  comment: string;
+  utrGain?: string;
+}
+
+export const MOCK_DASHBOARD = {
+  userName: 'Alex',
+  date: 'Today, Oct 24',
+  weather: '74°F Court Ready',
+  courtUtilization: 88,
+  utilizationGrowth: '+14% vs last week',
+  courtsActive: '8 of 9 tournament-grade courts booked',
+  courtBubbles: ['C1', 'C2', 'C3', '+5'],
+  stats: {
+    activePlayers: { value: 342, growth: '+12.5%', sub: '28 enrolled this week' },
+    courtBookings: { value: 48, growth: '4 left', sub: 'Peak: 5:00 PM - 8:30 PM' },
+    academyRev: { value: '$14.2k', progress: 92, sub: 'Monthly target 92%' },
+    coachingHours: { value: '128 hrs', rating: 4.98, sub: 'Top tier performance' },
+  },
+  utilizationCurve: [
+    { time: '6 AM', rate: 20 },
+    { time: '10 AM', rate: 65 },
+    { time: '2 PM', rate: 78 },
+    { time: '5 PM (Peak)', rate: 94 },
+    { time: '10 PM', rate: 35 },
+  ],
+  liveCourts: [
+    {
+      id: 'c1',
+      courtNo: '01',
+      title: 'Federer vs Nadal',
+      status: 'LIVE',
+      score: '6-4, 5-5',
+      details: 'Junior Elite Championship • Final Set',
+      elapsed: '1h 42m elapsed',
+      umpire: 'Sarah M.',
+      gameScore: 'Game 11 • 30-15',
+      isHot: true,
+    },
+    {
+      id: 'c2',
+      courtNo: '02',
+      title: 'Private Lesson',
+      status: 'Training',
+      timeSlot: '10:00 - 11:30 AM',
+      remaining: '35 mins remaining',
+      details: 'Coach David Miller • Forehand Topspin Drills',
+      student: 'Student: Marcus Vance (UTR 6.2)',
+      isRecorded: true,
+    },
+    {
+      id: 'c3',
+      courtNo: '03',
+      title: 'Open Drills & Rally',
+      status: 'Club Hive',
+      details: 'Intermediate Group (UTR 4.0 - 5.5) • 6 Players',
+      extra: '68 mph avg rally speed',
+      activeBadge: 'Ball Machine',
+      canJoin: true,
+    },
+  ],
+};
+
+export const MOCK_PLAYERS: Player[] = [
+  {
+    id: 'p1',
+    name: 'Marcus Vance',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
+    badge: 'PRO TIER',
+    utr: 9.4,
+    playStyle: 'Right-Handed',
+    winRate: '78%',
+    nextMatch: 'Today 4:30 PM (Court 2)',
+    isOnline: true,
+  },
+  {
+    id: 'p2',
+    name: 'Elena Rostova',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80',
+    badge: 'ELITE SQUAD',
+    utr: 11.2,
+    playStyle: '2-Handed Backhand',
+    statusTag: "Champ '24",
+    weeklyDrills: '6.0 hrs logged',
+    drillProgress: 85,
+    isOnline: true,
+  },
+  {
+    id: 'p3',
+    name: 'Liam Chen',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80',
+    badge: 'INTERMEDIATE',
+    utr: 6.8,
+    playStyle: 'Baseline Specialist',
+    statusTag: '12 Sessions',
+    attendanceRate: '92% this month',
+    isOnline: false,
+  },
+  {
+    id: 'p4',
+    name: 'Sophia Miller',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=250&q=80',
+    badge: 'WEEKEND LEAGUE',
+    utr: 8.1,
+    playStyle: 'All-Court Player',
+    statusTag: 'Booking Pending',
+    requestTime: 'Saturday 9:00 AM (Court 4)',
+    isOnline: false,
+  },
+];
+
+export const MOCK_COACHES: Coach[] = [
+  {
+    id: 'c-spotlight',
+    name: 'Alex Mercer',
+    role: 'HEAD OF HIGH PERFORMANCE',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80',
+    rating: 4.98,
+    reviewsCount: 124,
+    subtitle: 'Former ATP Top 300',
+    specialties: ['Heavy Topspin', 'Forehand Kinetic Chain', 'Tournament Prep'],
+    yearsPro: 14,
+    d1Recruits: 38,
+    successRate: 99,
+    rate: 95,
+    nextAvailable: 'Tomorrow at 10:00 AM',
+    isSpotlight: true,
+  },
+  {
+    id: 'c1',
+    name: 'David Brooks',
+    role: 'Junior Academy Director',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=250&q=80',
+    rating: 4.92,
+    reviewsCount: 86,
+    subtitle: '15yrs coaching • PTR Master Pro',
+    specialties: ['High School Prep', 'USTA Sectionals', 'Next Gen Sparring'],
+    rate: 80,
+    nextAvailable: 'Today at 3:00 PM',
+  },
+  {
+    id: 'c2',
+    name: 'Serena Vance',
+    role: 'Footwork & Agility Specialist',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=250&q=80',
+    rating: 5.0,
+    reviewsCount: 110,
+    subtitle: 'Former WTA Pro • Grand Slam Main Draw',
+    specialties: ['Lateral Recovery', 'Split-Step Reaction', 'Match Toughness'],
+    rate: 110,
+    nextAvailable: 'Friday at 8:30 AM',
+  },
+  {
+    id: 'c3',
+    name: 'Mateo Silva',
+    role: 'Serve Kinematics & AI Video',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=250&q=80',
+    rating: 4.88,
+    reviewsCount: 64,
+    subtitle: 'FlightScope Master • 8 yrs exp',
+    specialties: ['High-Speed Motion', 'Kick Serve Mechanics', 'Racket Speed 120+'],
+    rate: 75,
+    nextAvailable: 'Tomorrow at 1:00 PM',
+  },
+];
+
+export const MOCK_PROGRAMS: Program[] = [
+  {
+    id: 'prg-1',
+    title: 'Power Serve & Volley Masterclass',
+    category: 'Intermediate - Advanced',
+    courtInfo: 'Courts 5 & 6',
+    price: '$65',
+    pricePeriod: '/ session',
+    coachName: 'Coach Alex R.',
+    coachTitle: 'USPTA Elite • Ex-ATP #380',
+    timeSlot: 'Tues & Thurs 6:00 PM',
+    duration: '90 Min Fast Drills',
+    spotsBooked: 8,
+    spotsTotal: 10,
+  },
+  {
+    id: 'prg-2',
+    title: 'Junior Rising Stars (Ages 7–11)',
+    category: 'Junior Development',
+    courtInfo: 'Orange & Green Dot',
+    price: '$220',
+    pricePeriod: '/ month',
+    coachName: 'Coach Maria S.',
+    coachTitle: 'Youth Development Director',
+    timeSlot: 'Mon, Wed, Fri 4:00 PM',
+    duration: '60 Min Drills + Play',
+    spotsBooked: 15,
+    spotsTotal: 16,
+  },
+  {
+    id: 'prg-3',
+    title: 'Adult Cardio Tennis & Live Ball',
+    category: 'All Skill Levels',
+    courtInfo: 'Court 1',
+    price: '$35',
+    pricePeriod: '/ drop-in',
+    coachName: 'Coach Julian D.',
+    coachTitle: 'High-Tempo Fitness Spec.',
+    timeSlot: 'Saturday 9:00 AM',
+    duration: '60 Min High Energy',
+    spotsBooked: 12,
+    spotsTotal: 12,
+    isFull: true,
+    waitlistCount: 3,
+  },
+];
+
+export const MOCK_REVIEWS: Review[] = [
+  {
+    id: 'r1',
+    author: 'Chloe Lin',
+    role: 'USTA 4.5 Player • With Alex M.',
+    rating: 5,
+    comment: 'Alex completely rebuilt my kick serve toss in two 1-on-1 sessions. My second serve is now a weapon instead of a liability.',
+    utrGain: 'UTR +1.8',
+  },
+  {
+    id: 'r2',
+    author: 'Marcus Bennett',
+    role: 'Tennis Parent • With Serena V.',
+    rating: 5,
+    comment: 'Coach Serena helped my daughter gain the court discipline and footwork needed to reach Sectionals top 10 rankings.',
+    utrGain: 'UTR +2.1',
+  },
+];
+
+export const MOCK_CHAT_THREADS: ChatThread[] = [
+  {
+    id: 't1',
+    senderName: 'Coach Alex Mercer',
+    senderRole: 'PRO',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80',
+    time: '10:42 AM',
+    lastMessage: 'Great topspin drills today! Reviewing video of your wrist snap at baseline...',
+    attachment: '📹 1 Attachment',
+    unreadCount: 2,
+    isOnline: true,
+  },
+  {
+    id: 't2',
+    senderName: 'Junior Elite Squad',
+    senderRole: 'Group',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
+    time: '9:15 AM',
+    lastMessage: 'Tournament schedule for this weekend has been published.',
+    unreadCount: 0,
+    isGroup: true,
+    groupMembers: 14,
+    status: '✓ Read',
+  },
+  {
+    id: 't3',
+    senderName: 'Court Desk & Front Desk',
+    senderRole: 'Official',
+    avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=250&q=80',
+    time: 'Yesterday',
+    lastMessage: 'Your Court 3 booking is confirmed for Saturday 10:00 AM.',
+    attachment: '📄 Booking_Pass.pdf',
+    tag: 'Court 3 • Clay',
+    isOnline: true,
+  },
+  {
+    id: 't4',
+    senderName: 'Elena Rostova',
+    senderRole: '4.5 UTR',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80',
+    time: 'Oct 22',
+    lastMessage: 'Up for a 1-set tiebreaker before our evening clinic?',
+    status: '✓ Delivered',
+    tag: 'Rivalry (3-2)',
+  },
+];
