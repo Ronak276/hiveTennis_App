@@ -26,8 +26,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
   const [email, setEmail] = useState('alex.mercer@hivetennis.com');
   const [password, setPassword] = useState('••••••••••••');
   const [fullName, setFullName] = useState('Alex Mercer');
-  const [utrRating, setUtrRating] = useState('9.4');
-  const [memberTier, setMemberTier] = useState('Pro Player');
+  const [utrRating] = useState('9.4');
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleAuthSubmit = (e: React.FormEvent) => {
@@ -170,7 +169,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                       </span>
                     </div>
                     <h3 className="text-xl font-black text-[#17171A]">
-                      {authMode === 'login' ? 'Player Member Sign In' : 'Join HiveTennis Club'}
+                      {authMode === 'login' ? 'Player Sign In' : 'Join HiveTennis Club'}
                     </h3>
 
                     {/* Mode Toggle Tabs (Sign In / Register) */}
@@ -178,22 +177,20 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                       <button
                         type="button"
                         onClick={() => setAuthMode('login')}
-                        className={`py-2 rounded-xl transition-all cursor-pointer ${
-                          authMode === 'login'
-                            ? 'bg-white text-[#17171A] shadow-xs font-black'
-                            : 'text-slate-500 hover:text-slate-800'
-                        }`}
+                        className={`py-2 rounded-xl transition-all cursor-pointer ${authMode === 'login'
+                          ? 'bg-white text-[#17171A] shadow-xs font-black'
+                          : 'text-slate-500 hover:text-slate-800'
+                          }`}
                       >
                         Sign In
                       </button>
                       <button
                         type="button"
                         onClick={() => setAuthMode('signup')}
-                        className={`py-2 rounded-xl transition-all cursor-pointer ${
-                          authMode === 'signup'
-                            ? 'bg-white text-[#17171A] shadow-xs font-black'
-                            : 'text-slate-500 hover:text-slate-800'
-                        }`}
+                        className={`py-2 rounded-xl transition-all cursor-pointer ${authMode === 'signup'
+                          ? 'bg-white text-[#17171A] shadow-xs font-black'
+                          : 'text-slate-500 hover:text-slate-800'
+                          }`}
                       >
                         Register Player
                       </button>
@@ -230,56 +227,21 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                   {/* Player Form Inputs */}
                   <form onSubmit={handleAuthSubmit} className="space-y-3 pt-1 text-left">
                     {authMode === 'signup' && (
-                      <>
-                        <div>
-                          <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
-                            PLAYER FULL NAME
-                          </label>
-                          <div className="relative">
-                            <User className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
-                            <Input
-                              value={fullName}
-                              onChange={(e) => setFullName(e.target.value)}
-                              placeholder="e.g. Marcus Vance"
-                              className="pl-9 h-10 text-xs rounded-xl bg-slate-50 border border-slate-200 text-[#17171A]"
-                              required
-                            />
-                          </div>
+                      <div>
+                        <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
+                          PLAYER FULL NAME
+                        </label>
+                        <div className="relative">
+                          <User className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
+                          <Input
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            placeholder="e.g. Marcus Vance"
+                            className="pl-9 h-10 text-xs rounded-xl bg-slate-50 border border-slate-200 text-[#17171A]"
+                            required
+                          />
                         </div>
-
-                        <div className="grid grid-cols-2 gap-2">
-                          <div>
-                            <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
-                              UTR RATING
-                            </label>
-                            <select
-                              value={utrRating}
-                              onChange={(e) => setUtrRating(e.target.value)}
-                              className="w-full h-10 rounded-xl bg-slate-50 border border-slate-200 px-3 text-xs font-bold text-slate-800"
-                            >
-                              <option value="4.5">UTR 4.5 - Beginner</option>
-                              <option value="6.8">UTR 6.8 - Intermediate</option>
-                              <option value="9.4">UTR 9.4 - Pro Tier</option>
-                              <option value="11.2">UTR 11.2 - Elite Squad</option>
-                            </select>
-                          </div>
-
-                          <div>
-                            <label className="text-[10px] font-extrabold text-slate-700 block mb-1 uppercase">
-                              MEMBERSHIP TIER
-                            </label>
-                            <select
-                              value={memberTier}
-                              onChange={(e) => setMemberTier(e.target.value)}
-                              className="w-full h-10 rounded-xl bg-slate-50 border border-slate-200 px-3 text-xs font-bold text-slate-800"
-                            >
-                              <option value="Pro Player">Pro Member</option>
-                              <option value="Junior Academy">Junior Academy</option>
-                              <option value="Weekend League">Weekend League</option>
-                            </select>
-                          </div>
-                        </div>
-                      </>
+                      </div>
                     )}
 
                     <div>
