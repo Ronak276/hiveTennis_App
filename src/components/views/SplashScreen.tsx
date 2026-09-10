@@ -26,7 +26,6 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
   const [email, setEmail] = useState('alex.mercer@hivetennis.com');
   const [password, setPassword] = useState('••••••••••••');
   const [fullName, setFullName] = useState('Alex Mercer');
-  const [utrRating] = useState('9.4');
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleAuthSubmit = (e: React.FormEvent) => {
@@ -155,7 +154,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                     Welcome Back, {fullName}!
                   </h3>
                   <p className="text-xs text-slate-500 max-w-xs">
-                    UTR <strong>{utrRating}</strong> Profile Verified. Entering HiveTennis Dashboard...
+                    Profile Verified. Entering HiveTennis Dashboard...
                   </p>
                 </div>
               ) : (
@@ -209,7 +208,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onStart }) => {
                           Alex Mercer
                         </span>
                         <span className="text-[10px] font-bold text-slate-600">
-                          UTR 9.4 • Pro Member
+                          alex.mercer@hivetennis.com
                         </span>
                       </div>
                     </div>
