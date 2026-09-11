@@ -8,6 +8,7 @@ import { PlayersView } from '@/components/views/PlayersView';
 import { ProgramsView } from '@/components/views/ProgramsView';
 import { CoachesView } from '@/components/views/CoachesView';
 import { MessagesView } from '@/components/views/MessagesView';
+import { ProfileView } from '@/components/views/ProfileView';
 import { BookingModal } from '@/components/Modals/BookingModal';
 import { EnrollModal } from '@/components/Modals/EnrollModal';
 import { MatchmakerModal } from '@/components/Modals/MatchmakerModal';
@@ -17,6 +18,7 @@ import { Player, Coach, ChatThread, MOCK_CHAT_THREADS } from '@/data/mockData';
 export function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [activeTab, setActiveTab] = useState('home');
+  const [previousTab, setPreviousTab] = useState('home');
 
   // Modal States
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
@@ -25,6 +27,24 @@ export function App() {
   const [matchmakerModalOpen, setMatchmakerModalOpen] = useState(false);
   const [chatModalOpen, setChatModalOpen] = useState(false);
   const [selectedThread, setSelectedThread] = useState<ChatThread | null>(null);
+
+  const handleTabChange = (tab: string) => {
+    if (activeTab !== 'profile') {
+      setPreviousTab(activeTab);
+    }
+    setActiveTab(tab);
+  };
+
+  const handleOpenProfile = () => {
+    if (activeTab !== 'profile') {
+      setPreviousTab(activeTab);
+    }
+    setActiveTab('profile');
+  };
+
+  const handleBackFromProfile = () => {
+    setActiveTab(previousTab || 'home');
+  };
 
   const handleOpenEnroll = (title: string) => {
     setSelectedProgramTitle(title);
@@ -79,8 +99,9 @@ export function App() {
             <Header
               activeTab={activeTab}
               onOpenSplash={() => setShowSplash(true)}
+              onOpenProfile={handleOpenProfile}
               onNotificationClick={() => {
-                setActiveTab('messages');
+                handleTabChange('messages');
               }}
             />
 
@@ -119,13 +140,21 @@ export function App() {
                     onNewInquiry={handleNewInquiry}
                   />
                 )}
+                {activeTab === 'profile' && (
+                  <ProfileView
+                    key="profile"
+                    onBack={handleBackFromProfile}
+                    onLogout={() => setShowSplash(true)}
+                    onBookCourt={() => setBookingModalOpen(true)}
+                  />
+                )}
               </AnimatePresence>
             </main>
 
             {/* Floating Animated Bottom Navigation */}
             <BottomNav
               activeTab={activeTab}
-              setActiveTab={setActiveTab}
+              setActiveTab={handleTabChange}
               unreadChatCount={2}
             />
 

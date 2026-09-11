@@ -349,3 +349,151 @@ export const MOCK_CHAT_THREADS: ChatThread[] = [
     tag: 'Rivalry (3-2)',
   },
 ];
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  handle: string;
+  email: string;
+  phone: string;
+  avatar: string;
+  statusTag: string;
+  isOnline: boolean;
+  utr: number;
+  utrGain: string;
+  ranking: string;
+  matchesPlayed: number;
+  winRate: string;
+  wins: number;
+  losses: number;
+  playStyle: string;
+  handedness: string;
+  backhand: string;
+  gear: {
+    racquet: string;
+    strings: string;
+    tension: string;
+    shoes: string;
+  };
+  courtPreferences: {
+    surface: string;
+    preferredTime: string;
+    weeklyTargetHours: number;
+  };
+  stats: {
+    drillsLoggedHours: number;
+    courtBookingsCount: number;
+    streakDays: number;
+    acesTotal: number;
+  };
+  recentMatches: {
+    id: string;
+    opponent: string;
+    opponentAvatar: string;
+    opponentUtr: number;
+    result: 'WON' | 'LOST';
+    score: string;
+    court: string;
+    date: string;
+  }[];
+  achievements: {
+    id: string;
+    icon: string;
+    title: string;
+    desc: string;
+    date: string;
+  }[];
+}
+
+export const MOCK_USER_PROFILE: UserProfile = {
+  id: 'usr-alex',
+  name: 'Alex Mercer',
+  handle: '@alex.mercer',
+  email: 'alex.mercer@hivetennis.com',
+  phone: '+1 (555) 234-5678',
+  avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80',
+  statusTag: 'ACTIVE ON COURT',
+  isOnline: true,
+  utr: 9.4,
+  utrGain: '+0.4 this season',
+  ranking: 'Club Top 5 • State Tier 1',
+  matchesPlayed: 30,
+  winRate: '80%',
+  wins: 24,
+  losses: 6,
+  playStyle: 'Aggressive Baseliner',
+  handedness: 'Right-Handed',
+  backhand: '2-Handed Backhand',
+  gear: {
+    racquet: 'Wilson Pro Staff 97 v14',
+    strings: 'Luxilon ALU Power 125',
+    tension: '52 lbs (23.5 kg)',
+    shoes: 'Nike Court Air Zoom Vapor Pro 2',
+  },
+  courtPreferences: {
+    surface: 'Clay & Outdoor Hard',
+    preferredTime: 'Weekday Evenings (5:00 - 8:30 PM)',
+    weeklyTargetHours: 8,
+  },
+  stats: {
+    drillsLoggedHours: 24.5,
+    courtBookingsCount: 32,
+    streakDays: 12,
+    acesTotal: 148,
+  },
+  recentMatches: [
+    {
+      id: 'm1',
+      opponent: 'Elena Rostova',
+      opponentAvatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80',
+      opponentUtr: 11.2,
+      result: 'WON',
+      score: '6-4, 5-5 (Tiebreaker 7-5)',
+      court: 'Court 01 (Clay)',
+      date: 'Yesterday, 4:30 PM',
+    },
+    {
+      id: 'm2',
+      opponent: 'Marcus Vance',
+      opponentAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
+      opponentUtr: 9.4,
+      result: 'WON',
+      score: '6-3, 7-6 (4)',
+      court: 'Court 02 (Hard)',
+      date: 'Oct 20, 2025',
+    },
+    {
+      id: 'm3',
+      opponent: 'David Brooks',
+      opponentAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=250&q=80',
+      opponentUtr: 10.1,
+      result: 'LOST',
+      score: '4-6, 6-7 (5)',
+      court: 'Court 04 (Indoor)',
+      date: 'Oct 14, 2025',
+    },
+  ],
+  achievements: [
+    {
+      id: 'a1',
+      icon: '🏆',
+      title: "Hive Fall Classic Champion '24",
+      desc: 'Won Division 1 singles tournament bracket',
+      date: 'Sep 2024',
+    },
+    {
+      id: 'a2',
+      icon: '⚡',
+      title: '10-Match Win Streak',
+      desc: 'Consecutive sanctioned singles victories',
+      date: 'Oct 2024',
+    },
+    {
+      id: 'a3',
+      icon: '🎯',
+      title: 'Precision Ace Master',
+      desc: '100+ aces served with 68%+ first serve in',
+      date: 'Aug 2024',
+    },
+  ],
+};

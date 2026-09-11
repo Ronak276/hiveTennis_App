@@ -5,12 +5,14 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 interface HeaderProps {
   activeTab: string;
   onOpenSplash?: () => void;
+  onOpenProfile?: () => void;
   onNotificationClick?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeTab,
   onOpenSplash,
+  onOpenProfile,
   onNotificationClick,
 }) => {
   const getSubTitle = () => {
@@ -25,6 +27,8 @@ export const Header: React.FC<HeaderProps> = ({
         return 'COACHES';
       case 'messages':
         return 'MESSAGES';
+      case 'profile':
+        return 'PLAYER PROFILE';
       default:
         return 'DASHBOARD';
     }
@@ -63,8 +67,13 @@ export const Header: React.FC<HeaderProps> = ({
         </button>
 
         <button
-          onClick={onOpenSplash}
-          className="focus:outline-none rounded-full ring-2 ring-[#8DC61F]/40 p-0.5 cursor-pointer hover:scale-105 transition-transform"
+          onClick={onOpenProfile || onOpenSplash}
+          className={`focus:outline-none rounded-full p-0.5 cursor-pointer hover:scale-105 transition-all ${
+            activeTab === 'profile'
+              ? 'ring-2 ring-[#8DC61F] shadow-sm bg-[#8DC61F]/20'
+              : 'ring-2 ring-[#8DC61F]/40 hover:ring-[#8DC61F]'
+          }`}
+          title="My Profile"
         >
           <Avatar className="h-8 w-8">
             <AvatarImage
