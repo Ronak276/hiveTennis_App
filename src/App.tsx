@@ -113,6 +113,7 @@ export function App() {
                     key="home"
                     onBookCourt={() => setBookingModalOpen(true)}
                     onOpenMatchmaker={() => setMatchmakerModalOpen(true)}
+                    onNavigateTab={handleTabChange}
                   />
                 )}
                 {activeTab === 'players' && (
